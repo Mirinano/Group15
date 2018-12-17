@@ -57,8 +57,12 @@ public class MapGameController implements Initializable {
         KeyCode key = event.getCode();
         if (key == KeyCode.DOWN){
             downButtonAction();
-        }else if (key == KeyCode.RIGHT){
+        } else if (key == KeyCode.RIGHT){
             rightButtonAction();
+        } else if (key == KeyCode.LEFT) {
+            leftButtonAction();
+        } else if (key == KeyCode.UP) {
+            upButtonAction();
         }
     }
 
@@ -84,5 +88,27 @@ public class MapGameController implements Initializable {
     }
     public void rightButtonAction(ActionEvent event) {
         rightButtonAction();
+    }
+
+public void leftButtonAction() {
+        outputAction("LEFT");
+        chara.setCharaDir(MoveChara.TYPE_LEFT);
+        chara.move(-1, 0);
+        mapPrint(chara, mapData);
+    }
+
+    public void leftButtonAction(ActionEvent event) {
+        leftButtonAction();
+    }
+
+public void upButtonAction() {
+        outputAction("UP");
+        chara.setCharaDir(MoveChara.TYPE_UP);
+        chara.move(0, -1);
+        mapPrint(chara, mapData);
+    }
+
+    public void upButtonAction(ActionEvent event) {
+        upButtonAction();
     }
 }
