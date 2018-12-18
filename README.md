@@ -1,5 +1,3 @@
 Group15
 
-edit test
-
-edit test2
+masterブランチへはテスト実行者が動作を確認してからプッシュしましょう。
