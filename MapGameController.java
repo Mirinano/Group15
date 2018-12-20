@@ -81,6 +81,8 @@ public class MapGameController implements Initializable {
     public void mapPrint(MoveChara c, MapData m) {
         int cx = c.getPosX();
         int cy = c.getPosY();
+        int gx = c.getPosgX();
+        int gy = c.getPosgY();
         mapGrid.getChildren().clear();
         for (int y = 0; y < mapData.getHeight(); y++) {
             for (int x = 0; x < mapData.getWidth(); x++) {
@@ -89,6 +91,11 @@ public class MapGameController implements Initializable {
                     mapGrid.add(c.getCharaImageView(), x, y);
                 } else {
                     mapGrid.add(mapImageViews[index], x, y);
+                }
+                if (x == gx && y == gy) {
+                    chara.ghost();
+                    mapGrid.add(c.getGhostlImageView(), gx, gy);
+
                 }
             }
         }
@@ -137,6 +144,7 @@ public class MapGameController implements Initializable {
             //↓ジャンプしなかったら
             chara.setCharaDir(MoveChara.TYPE_DOWN);
             chara.move(0, 1);
+            chara.moveghost(0, 1);
             outputAction("DOWN");
         }
         mapPrint(chara, mapData);
@@ -155,6 +163,7 @@ public class MapGameController implements Initializable {
             //↓ジャンプしなかったら
             chara.setCharaDir(MoveChara.TYPE_RIGHT);
             chara.move(1, 0);
+            chara.moveghost(-1, 0);
             outputAction("RIGHT");
         }
         mapPrint(chara, mapData);
@@ -173,6 +182,7 @@ public class MapGameController implements Initializable {
             //↓ジャンプしなかったら
             chara.setCharaDir(MoveChara.TYPE_LEFT);
             chara.move(-1, 0);
+            chara.moveghost(1, 0);
             outputAction("LEFT");
         }
         mapPrint(chara, mapData);
@@ -191,6 +201,7 @@ public class MapGameController implements Initializable {
             //↓ジャンプしなかったら
             chara.setCharaDir(MoveChara.TYPE_UP);
             chara.move(0, -1);
+            chara.moveghost(0, 1);
             outputAction("UP");
         }
         mapPrint(chara, mapData);
