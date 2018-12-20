@@ -162,7 +162,7 @@ public class MapGameController implements Initializable {
             outputAction("JUMP");
             chara.setCharaDir(type);
             chara.move2(x, y);
-            // mapPrint(chara, mapData);
+            // mapPrint(chara, mapData);「
 
             AudioClip oto = new AudioClip(new File("./mp3/jump.mp3").toURI().toString());
             oto.play();

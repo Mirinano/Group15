@@ -57,6 +57,15 @@ public class MapData {
         return this.items[n];
     }
 
+    public boolean checkgetitems() {
+        for (int i = 0; i < 4; i++) {
+            if (items[i].checkget()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void setMap(int x, int y, int type) {
         if (x < 1 || width <= x - 1 || y < 1 || height <= y - 1) {
             return;

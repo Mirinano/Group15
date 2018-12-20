@@ -20,6 +20,10 @@ public class Item {
         }
     }
 
+    public boolean checkget() {
+        return exist;
+    }
+
     public void ChangeExist() {
         this.exist = false;
     }
