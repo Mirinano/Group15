@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.animation.AnimationTimer;
 
-MoveChara {
+public class MoveChara {
     public static final int TYPE_DOWN  = 0;
     public static final int TYPE_LEFT  = 1;
     public static final int TYPE_RIGHT = 2;
@@ -51,8 +51,6 @@ MoveChara {
         setCharaDir(TYPE_DOWN);
     }
     
-      
-    }
 
     public void changeCount(){
         count = count + diffx;
