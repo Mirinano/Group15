@@ -1,5 +1,3 @@
 Group15
 
-edit test
-
-edit test2
+実質master
