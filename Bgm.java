@@ -1,5 +1,3 @@
-//Emacs customization file -*- mode:java; coding:utf-8-unix -*-
-
 import java.io.File;
 import javafx.scene.media.Media;
 import java.net.MalformedURLException;
@@ -12,7 +10,7 @@ import javafx.scene.media.AudioClip;
 public class    Bgm {
 
     private static AudioClip mplayer =new AudioClip(new File("./wav/menu.wav").toURI().toString());
-    //↑static忘れずに。何曲もなっちゃうぞ(別プレーヤになる)
+    //↑static忘れずに。何曲も再生されることに…(別プレーヤになる)
 
     //メニュー画面
     public void menu() {//call from GameStartController::Initializable
@@ -32,7 +30,7 @@ public class    Bgm {
         mplayer.play();
     }
 
-
+    //↓SE
     //ジャンプ音
     public void jump() {//call from MapGameController::jump()
         //これは別プレーヤ
