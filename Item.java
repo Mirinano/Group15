@@ -11,13 +11,16 @@ public class Item {
         this.exist = true;
     }
 
-    public boolean ExistItem(int x, int y){
-        if ((this.x == x) and (this.y == y)){
+    public boolean ExistItem(int x, int y) {
+        if ((this.x == x) & (this.y == y)) {
+            ChangeExist();
             return true;
         } else {
             return false;
         }
     }
 
-    static
+    public void ChangeExist() {
+        this.exist = false;
+    }
 }
