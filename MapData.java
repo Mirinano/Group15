@@ -17,7 +17,7 @@ public class MapData {
     
     private Random rnd = new Random();
 
-    private Item[] items = new items[4];
+    private Item[] items;
 
     MapData(int x, int y) {
         mapImages = new Image[2];
