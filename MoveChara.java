@@ -1,3 +1,5 @@
+// Emacs customization file -*- mode:python; coding:utf-8-unix -*-
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
@@ -87,11 +89,31 @@ public class MoveChara {
         }
         return false;
     }
+    public boolean canMove2(int dx, int dy){
+        if (mapData.getMap(dx, dy) == MapData.TYPE_WALL){
+//   System.out.println("canMove2:false");
+            return false;
+        } else if (mapData.getMap(dx,dy) == MapData.TYPE_NONE){
+//   System.out.println("canMove2:true dx"+dx+" dy"+dy);
+            return true;
+        }
+        return false;
+    }
 
     public boolean move(int dx, int dy){
         if (canMove(dx,dy)){
             posX += dx;
             posY += dy;
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public boolean move2(int dx, int dy){
+        if (canMove2(dx,dy)){
+            posX =dx;
+            posY =dy;
+//       System.out.println("pX:"+posX+"  pY:"+posY);
             return true;
         }else {
             return false;
