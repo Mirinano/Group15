@@ -53,6 +53,10 @@ public class MapData {
         return mapImageViews[y][x];
     }
 
+    public Item getItem(int n) {
+        return this.items[n];
+    }
+
     public void setMap(int x, int y, int type) {
         if (x < 1 || width <= x - 1 || y < 1 || height <= y - 1) {
             return;
