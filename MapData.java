@@ -8,7 +8,7 @@ public class MapData {
     private static final String mapImageFiles[] = {
         "png/SPACE.png",
         "png/WALL.png",
-        "png/SPACE.png"  // not used
+        "png/item.png"  // not used
     };
 
     private Image[] mapImages;
@@ -111,3 +111,4 @@ public class MapData {
         }
     }
 }
+
