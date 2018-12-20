@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ContinueController">
+  <children>
+    <Text layoutX="21.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do You Continue?" textAlignment="CENTER">
+      <font>
+        <Font name="System Bold Italic" size="56.0" />
+      </font>
+    </Text>
+    <Button layoutX="87.0" layoutY="291.0" mnemonicParsing="false" onAction="#BackMenuButtonAction" onMouseClicked="#BackMenuButtonAction" prefHeight="65.1875" prefWidth="113.0" text="Back Menu" />
+    <Button fx:id="ContinueButton" layoutX="404.0" layoutY="291.0" mnemonicParsing="false" onAction="#ContinueButtonAction" prefHeight="65.1875" prefWidth="113.0" text="Continue" />
+  </children>
+</AnchorPane>
