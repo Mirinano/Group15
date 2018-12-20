@@ -21,6 +21,7 @@ public class GameStartController {
     @FXML
     void GhostButtonAction(Event event) {
         new MapGame().changeView("MapGame1.fxml");
+	//ゲームスタート
     }
 
     @FXML
@@ -30,12 +31,14 @@ public class GameStartController {
     @FXML
     void WarpButtonAction(ActionEvent event) {
         new MapGame().changeView("MapGame.fxml");
+	//ゲームスタート
     }
 
     @FXML
     void initialize() {
         assert GhostStart != null : "fx:id=\"GhostStart\" was not injected: check your FXML file 'GameStart.fxml'.";
 		new Bgm().menu();
+	    	//メニューのBGM再生
 
     }
 
