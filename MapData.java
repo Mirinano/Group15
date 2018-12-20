@@ -59,9 +59,8 @@ public class MapData {
 
     public boolean checkgetitems() {
         for (int i = 0; i < 4; i++) {
-            if (items[i].checkget()) {
-                return false;
-            }
+            if (items[i].checkget()) {}
+            
         }
         return true;
     }
