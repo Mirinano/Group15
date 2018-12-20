@@ -78,7 +78,7 @@ public class MapData {
         int x_size = width;
         int y_size = height;
         int x, y;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             while (true) {
                 x = rnd.nextInt(x_size);
                 y = rnd.nextInt(y_size);
