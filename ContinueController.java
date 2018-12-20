@@ -21,11 +21,13 @@ public class ContinueController {
     @FXML
     void BackMenuButtonAction(Event event) {
         new MapGame().changeView("GameStart.fxml");
+        //スタート画面に遷移
     }
 
     @FXML
     void ContinueButtonAction(ActionEvent event) {
         new MapGame().changeView("MapGame.fxml");
+        //再度ゲームスタート
     }
 
     @FXML
