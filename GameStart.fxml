@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox onKeyPressed="#keyAction" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameStartController">
+  <padding>
+    <Insets bottom="10" left="10" right="10" top="10" />
+  </padding>
+
+  <children>
+      <Pane prefHeight="482.0" prefWidth="421.0">
+         <children>
+	<Button layoutX="97.0" layoutY="427.0" onAction="#func1ButtonAction" prefWidth="100" text="START" />
+	<Button layoutX="235.0" layoutY="427.0" onAction="#func2ButtonAction" prefWidth="100" text="EXIT" />
+    <Label fx:id="myLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="117.0" prefHeight="154.0" prefWidth="385.0" text="NEKO GAME">
+               <font>
+                  <Font size="46.0" />
+               </font></Label>
+         </children>
+      </Pane>
+
+  </children>
+</VBox>
