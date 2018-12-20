@@ -14,6 +14,8 @@ public class MapData {
     private int[][] maps;
     private int width;
     private int height;
+    
+    private Random rnd = new Random();
 
     private Item[] items = new items[4];
 
