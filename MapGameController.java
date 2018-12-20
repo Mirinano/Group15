@@ -92,9 +92,6 @@ public class MapGameController implements Initializable {
                 } else {
                     mapGrid.add(mapImageViews[index], x, y);
                 }
-                if (x == gx && y == gy) {
-                    chara.ghost();
-                    mapGrid.add(c.getGhostlImageView(), gx, gy);
 
                 }
             }
