@@ -1,12 +1,16 @@
+//Emacs customization file -*- mode:java; coding:utf-8-unix -*-
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import java.util.Random;
 
 public class MapData {
-    public static final int TYPE_NONE = 0;
-    public static final int TYPE_WALL = 1;
+    public static final int TYPE_NONE   = 0;
+    public static final int TYPE_WALL   = 1;
     public static final int TYPE_OTHERS = 2;
-    private static final String mapImageFiles[] = { "png/SPACE.png", "png/WALL.png", "png/item.png" // not used
+    private static final String mapImageFiles[] = {
+        "png/SPACE.png",
+        "png/WALL.png",
+        "png/item.png"  //「not used」じゃなくなった
     };
 
     private Image[] mapImages;
@@ -14,33 +18,43 @@ public class MapData {
     private int[][] maps;
     private int width;
     private int height;
-    
-    private Random rnd = new Random();
 
-    private Item[] items;
-
-    MapData(int x, int y) {
-        mapImages = new Image[2];
+    MapData(int x, int y){
+        mapImages     = new Image[3];
         mapImageViews = new ImageView[y][x];
-        for (int i = 0; i < 2; i++) {
+//        for (int i=0; i<2; i++) {
+        for (int i=0; i<3; i++) {
             mapImages[i] = new Image(mapImageFiles[i]);
         }
 
-        width = x;
+        width  = x;
         height = y;
         maps = new int[y][x];
 
         fillMap(MapData.TYPE_WALL);
         digMap(1, 3);
-        setItems();
+
+        //アイテム設置 /////////////////////////////////////
+        for (int xx,yy,count=0; count <2;  ) {
+            xx = (int)(Math.random()*20);
+            yy = (int)(Math.random()*14);
+            if (maps[yy][xx] ==MapData.TYPE_NONE) {
+                maps[yy][xx] =MapData.TYPE_OTHERS;
+                count++;
+            }
+        }
+        //ゴールには必ず置いたるか
+        maps[13][19] = MapData.TYPE_OTHERS;
+        //アイテム設置 /////////////////////////////////////
+
         setImageViews();
     }
 
-    public int getHeight() {
+    public int getHeight(){
         return height;
     }
 
-    public int getWidth() {
+    public int getWidth(){
         return width;
     }
 
@@ -55,87 +69,65 @@ public class MapData {
         return mapImageViews[y][x];
     }
 
-    public Item getItem(int n) {
-        return this.items[n];
+    public void clr_item_image(int x, int y ) {//call from MoveChara
+        maps[y][x] =MapData.TYPE_NONE;
+        mapImageViews[y][x] = new ImageView(mapImages[maps[y][x]]);
     }
 
-    public boolean checkgetitems() {
-        for (int i = 0; i < 4; i++) {
-            if (items[i].checkget()) {}
-            
-        }
-        return true;
-    }
-
-    public void setMap(int x, int y, int type) {
-        if (x < 1 || width <= x - 1 || y < 1 || height <= y - 1) {
+public void setMap(int x, int y, int type){
+        if (x < 1 || width <= x-1 || y < 1 || height <= y-1) {
             return;
         }
         maps[y][x] = type;
     }
 
-    public void setItems() {
-        int x_size = width;
-        int y_size = height;
-        int x, y;
-        for (int i = 0; i < 4; i++) {
-            while (true) {
-                x = rnd.nextInt(x_size);
-                y = rnd.nextInt(y_size);
-                if (maps[y][x] == 0) {
-                    break;
-                }
-            }
-            maps[y][x] = 2;
-            items[i] = new Item(x, y, i);
-        }
-    }
-
     public void setImageViews() {
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
+        for (int y=0; y<height; y++) {
+            for (int x=0; x<width; x++) {
                 mapImageViews[y][x] = new ImageView(mapImages[maps[y][x]]);
             }
         }
     }
 
-    public void fillMap(int type) {
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
+
+
+    public void fillMap(int type){
+        for (int y=0; y<height; y++){
+            for (int x=0; x<width; x++){
                 maps[y][x] = type;
             }
         }
     }
 
-    public void digMap(int x, int y) {
+    public void digMap(int x, int y){
         setMap(x, y, MapData.TYPE_NONE);
-        int[][] dl = { { 0, 1 }, { 0, -1 }, { -1, 0 }, { 1, 0 } };
+        int[][] dl = {{0,1},{0,-1},{-1,0},{1,0}};
         int[] tmp;
 
-        for (int i = 0; i < dl.length; i++) {
-            int r = (int) (Math.random() * dl.length);
+        for (int i=0; i<dl.length; i++) {
+            int r = (int)(Math.random()*dl.length);
             tmp = dl[i];
             dl[i] = dl[r];
             dl[r] = tmp;
         }
 
-        for (int i = 0; i < dl.length; i++) {
+        for (int i=0; i<dl.length; i++){
             int dx = dl[i][0];
             int dy = dl[i][1];
-            if (getMap(x + dx * 2, y + dy * 2) == MapData.TYPE_WALL) {
-                setMap(x + dx, y + dy, MapData.TYPE_NONE);
-                digMap(x + dx * 2, y + dy * 2);
+            if (getMap(x+dx*2, y+dy*2) == MapData.TYPE_WALL){
+                setMap(x+dx, y+dy, MapData.TYPE_NONE);
+                digMap(x+dx*2, y+dy*2);
 
             }
         }
     }
 
-    public void printMap() {
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                if (getMap(x, y) == MapData.TYPE_WALL) {
+    public void printMap(){
+        for (int y=0; y<height; y++){
+            for (int x=0; x<width; x++){
+                if (getMap(x,y) == MapData.TYPE_WALL){
                     System.out.print("++");
-                } else {
+                }else{
                     System.out.print("  ");
                 }
             }
