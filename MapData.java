@@ -14,8 +14,10 @@ public class MapData {
     private int[][] maps;
     private int width;
     private int height;
+    
+    private Random rnd = new Random();
 
-    private Item[] items = new items[4];
+    private Item[] items;
 
     MapData(int x, int y) {
         mapImages = new Image[2];
@@ -59,9 +61,8 @@ public class MapData {
 
     public boolean checkgetitems() {
         for (int i = 0; i < 4; i++) {
-            if (items[i].checkget()) {
-                return false;
-            }
+            if (items[i].checkget()) {}
+            
         }
         return true;
     }
@@ -77,7 +78,7 @@ public class MapData {
         int x_size = width;
         int y_size = height;
         int x, y;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             while (true) {
                 x = rnd.nextInt(x_size);
                 y = rnd.nextInt(y_size);

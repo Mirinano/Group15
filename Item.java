@@ -11,9 +11,10 @@ public class Item {
         this.exist = true;
     }
 
-    public boolean ExistItem(int x, int y) {
-        if ((this.x == x) & (this.y == y)) {
+    public boolean ExistItem(int dx, int dy) {
+        if ((this.x == dx) & (this.y == dy)) {
             ChangeExist();
+            System.out.println("get item.");
             return true;
         } else {
             return false;
