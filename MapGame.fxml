@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.input.* ?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:controller="MapGameController" xmlns:fx="http://javafx.com/fxml"
-      onKeyPressed="#keyAction">
+<VBox onKeyPressed="#keyAction" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="MapGameController">
   <padding>
-    <Insets top="10" right="10" bottom="10" left="10"/>
+    <Insets bottom="10" left="10" right="10" top="10" />
   </padding>
-  
+
   <children>
     <HBox prefHeight="50">
       <children>
-	<GridPane xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-	  <Button text="↑" GridPane.rowIndex="0" GridPane.columnIndex="1" />
-	  <Button text="←" GridPane.rowIndex="1" GridPane.columnIndex="0" />
-	  <Button text="→" GridPane.rowIndex="1" GridPane.columnIndex="2" onAction="#rightButtonAction" />
-	  <Button text="↓" GridPane.rowIndex="2" GridPane.columnIndex="1" onAction="#downButtonAction" />
+	<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml">
+	  <Button onAction="#upButtonAction" text="↑" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+	  <Button onAction="#leftButtonAction" text="←" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+	  <Button onAction="#rightButtonAction" text="→" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+	  <Button onAction="#downButtonAction" text="↓" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 	</GridPane>
-	<Button text="func1" prefWidth="100" onAction="#func1ButtonAction"/>
-	<Button text="func2" prefWidth="100" onAction="#func2ButtonAction"/>
-	<Button text="func3" prefWidth="100" onAction="#func3ButtonAction"/>
-	<Button text="func4" prefWidth="100" onAction="#func4ButtonAction"/>
+            <Pane prefHeight="98.0" prefWidth="437.0">
+               <children>
+      	<Button layoutX="113.0" layoutY="6.0" onAction="#func2ButtonAction" prefWidth="100" text="func2" />
+      	<Button layoutX="213.0" layoutY="6.0" onAction="#func3ButtonAction" prefWidth="100" text="func3" />
+      	<Button layoutX="13.0" layoutY="6.0" onAction="#func1ButtonAction" prefWidth="100" text="func1" />
+      	<Button layoutX="313.0" layoutY="6.0" onAction="#func4ButtonAction" prefWidth="100" text="MENU" />
+                  <Label layoutX="14.0" layoutY="49.0" prefHeight="16.0" prefWidth="40.0" text="Time:" />
+                  <Label layoutX="131.0" layoutY="49.0" prefHeight="16.0" prefWidth="40.0" text="Item:" />
+                  <Label layoutX="243.0" layoutY="49.0" prefHeight="16.0" prefWidth="40.0" text="Total:" />
+                  <Label fx:id="label_tm" alignment="CENTER" layoutX="54.0" layoutY="44.0" prefHeight="26.0" prefWidth="63.0" text="00:00"><font><Font size="18.0" /></font></Label>
+                  <Label fx:id="label_im" alignment="CENTER_RIGHT" layoutX="173.0" layoutY="44.0" prefHeight="26.0" prefWidth="40.0" text="0"><font><Font size="18.0" /></font></Label>
+                  <Label fx:id="label_tl" alignment="CENTER_RIGHT" layoutX="291.0" layoutY="44.0" prefHeight="26.0" prefWidth="63.0" text="10"><font><Font size="18.0" /></font></Label>
+                  <Label layoutX="363.0" layoutY="49.0" prefHeight="16.0" prefWidth="40.0" text="point" />
+               </children>
+            </Pane>
       </children>
     </HBox>
-    <GridPane fx:id="mapGrid" prefWidth="360" prefHeight="360" >
+    <GridPane fx:id="mapGrid" prefHeight="360" prefWidth="360">
     </GridPane>
 
   </children>
