@@ -30,7 +30,7 @@ public class MoveChara {
     private int diffx = 1;
     private int charaDir;
 
-    MoveChara(int startX, int startY, int ghostX, int ghostY, MapData mapData) {
+    MoveChara(int startX, int startY, int ghostX, int ghostY, MapData mapData) { // ゴースト用のコンストラクタ
         this.mapData = mapData;
 
         charaImages = new Image[4][3];
@@ -59,7 +59,7 @@ public class MoveChara {
 
     }
 
-    public void ghost() {
+    public void ghost() {     // ゴーストの画像を読みこみ
         ghostl = new Image("png/ghostl.png");
         ghostlImageView = new ImageView();
         ghostlImageView.setImage(ghostl);
@@ -84,11 +84,11 @@ public class MoveChara {
         return posY;
     }
 
-    public int getPosgX() {
+    public int getPosgX() {　// ゴーストx座標を取得
         return posgX;
     }
 
-    public int getPosgY() {
+    public int getPosgY() {  // ゴーストのy座標を取得
         return posgY;
     }
 
@@ -112,7 +112,7 @@ public class MoveChara {
         return false;
     }
 
-    public boolean canMoveghost(int dx, int dy) {
+    public boolean canMoveghost(int dx, int dy) { //　ゴーストが動けるかどうか判定
         if (mapData.getMap(posgX + dx, posgY + dy) == MapData.TYPE_WALL) {
             return false;
         } else if (mapData.getMap(posgX + dx, posgY + dy) == MapData.TYPE_NONE) {
@@ -131,7 +131,7 @@ public class MoveChara {
         }
     }
 
-    public boolean moveghost(int dx, int dy) {
+    public boolean moveghost(int dx, int dy) {  //　ゴーストの移動
         if (canMoveghost(dx, dy)) {
             posgX += dx;
             posgY += dy;
@@ -145,7 +145,7 @@ public class MoveChara {
         return charaImageViews[charaDir];
     }
 
-    public ImageView getGhostlImageView() {
+    public ImageView getGhostlImageView() { // ゴーストの画像をとってくる
         return ghostlImageView;
     }
 
