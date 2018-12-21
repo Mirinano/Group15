@@ -1,4 +1,8 @@
-// Emacs customization file -*- mode:java; coding:utf-8-unix -*-
+/*
+ * Title      : MapGameController.java
+ * Description: 
+ * Encoding   : UTF-8
+*/
 
 import java.net.URL;
 import java.util.ResourceBundle;
