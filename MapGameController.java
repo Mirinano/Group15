@@ -49,7 +49,6 @@ public class MapGameController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         mapData = new MapData(21, 15);
         chara = new MoveChara(1, 1, mapData);
-        chara = new MoveChara(1, 1, 19, 1, mapData);
         // mapGroups = new Group[mapData.getHeight()*mapData.getWidth()];
         mapImageViews = new ImageView[mapData.getHeight() * mapData.getWidth()];
         for (int y = 0; y < mapData.getHeight(); y++) {
@@ -87,8 +86,6 @@ public class MapGameController implements Initializable {
     public void mapPrint(MoveChara c, MapData m) {
         int cx = c.getPosX();
         int cy = c.getPosY();
-        int gx = c.getPosgX();
-        int gy = c.getPosgY();
 
         mapGrid.getChildren().clear();
         for (int y = 0; y < mapData.getHeight(); y++) {
@@ -103,13 +100,10 @@ public class MapGameController implements Initializable {
                     mapGrid.add(mapImageViews[index], x, y);
 
                 }
-                if (x == gx && y == gy) {
-                    c.ghost();
-                    mapGrid.add(c.getGhostlImageView(), gx, gy);
-                }
+
             }
         }
-    }
+    
 
     public void func1ButtonAction(ActionEvent event) {
         // アイテムラベルの例
@@ -155,7 +149,6 @@ public class MapGameController implements Initializable {
             // ↓ジャンプしなかったら
             chara.setCharaDir(MoveChara.TYPE_DOWN);
             chara.move(0, 1);
-            chara.moveghost(0, 1);
             outputAction("DOWN");
         }
         mapPrint(chara, mapData);
@@ -175,7 +168,6 @@ public class MapGameController implements Initializable {
             // ↓ジャンプしなかったら
             chara.setCharaDir(MoveChara.TYPE_RIGHT);
             chara.move(1, 0);
-            chara.moveghost(-1, 0);
             outputAction("RIGHT");
         }
         mapPrint(chara, mapData);
@@ -195,7 +187,6 @@ public class MapGameController implements Initializable {
             // ↓ジャンプしなかったら
             chara.setCharaDir(MoveChara.TYPE_LEFT);
             chara.move(-1, 0);
-            chara.moveghost(1, 0);
             outputAction("LEFT");
         }
         mapPrint(chara, mapData);
@@ -215,7 +206,6 @@ public class MapGameController implements Initializable {
             // ↓ジャンプしなかったら
             chara.setCharaDir(MoveChara.TYPE_UP);
             chara.move(0, -1);
-            chara.moveghost(0, 1);
             outputAction("UP");
         }
         mapPrint(chara, mapData);
