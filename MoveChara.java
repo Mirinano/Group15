@@ -18,16 +18,13 @@ public class MoveChara {
 
     private int posX;
     private int posY;
-    private int posgX;
-    private int posgY;
+
 
     private MapData mapData;
 
     private Image[][] charaImages;
     private ImageView[] charaImageViews;
     private ImageAnimation[] charaImageAnimations;
-    private Image ghostl;
-    private ImageView ghostlImageView;
 
     private int count = 0;
     private int diffx = 1;
@@ -55,37 +52,9 @@ public class MoveChara {
         setCharaDir(TYPE_DOWN);
     }
 
-    MoveChara(int startX, int startY, int ghostX, int ghostY, MapData mapData) {
-        this.mapData = mapData;
+    
+            
 
-        charaImages = new Image[4][3];
-        charaImageViews = new ImageView[4];
-        charaImageAnimations = new ImageAnimation[4];
-
-        for (int i = 0; i < 4; i++) {
-            charaImages[i] = new Image[3];
-            for (int j = 0; j < 3; j++) {
-                charaImages[i][j] = new Image(pngPathBefore + dirStrings[i] + kindStrings[j] + pngPathAfter);
-            }
-            charaImageViews[i] = new ImageView(charaImages[i][0]);
-            charaImageAnimations[i] = new ImageAnimation(charaImageViews[i], charaImages[i]);
-        }
-
-        posX = startX;
-        posY = startY;
-
-        setCharaDir(TYPE_DOWN);
-
-        posgX = ghostX;
-        posgY = ghostY;
-
-    }
-
-    public void ghost() {
-        ghostl = new Image("png/ghostl.png");
-        ghostlImageView = new ImageView();
-        ghostlImageView.setImage(ghostl);
-    }
 
     public void changeCount() {
         count = count + diffx;
@@ -106,13 +75,7 @@ public class MoveChara {
         return posY;
     }
 
-    public int getPosgX() {
-        return posgX;
-    }
-
-    public int getPosgY() {
-        return posgY;
-    }
+  
 
     public void setCharaDir(int cd) {
         charaDir = cd;
@@ -144,14 +107,7 @@ public class MoveChara {
         return 2;
     }
 
-    public boolean canMoveghost(int dx, int dy) {
-        if (mapData.getMap(posgX + dx, posgY + dy) == MapData.TYPE_WALL) {
-            return false;
-        } else if (mapData.getMap(posgX + dx, posgY + dy) == MapData.TYPE_NONE) {
-            return true;
-        }
-        return false;
-    }
+ 
 
     public boolean move(int dx, int dy) {
         if (canMove(dx, dy) != 0) {
@@ -163,15 +119,7 @@ public class MoveChara {
         }
     }
 
-    public boolean moveghost(int dx, int dy) {
-        if (canMoveghost(dx, dy)) {
-            posgX += dx;
-            posgY += dy;
-            return true;
-        } else {
-            return false;
-        }
-    }
+  
 
     // ↓ジャンプで新設 call from MapGameController::jump ////////////////
     public boolean canMove2(int dx, int dy) {
@@ -199,9 +147,7 @@ public class MoveChara {
         return charaImageViews[charaDir];
     }
 
-    public ImageView getGhostlImageView() {
-        return ghostlImageView;
-    }
+  
 
     private class ImageAnimation extends AnimationTimer {
         // アニメーション対象ノード
